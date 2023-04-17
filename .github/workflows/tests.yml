@@ -28,8 +28,21 @@ jobs:
     name: Test
     steps:
     - uses: actions/checkout@v3
+    - run: |
+        git clone https://github.com/evacchi/wazero ../wazero
+        cd ../wazero
+        echo "wazero=$PWD" >> $GITHUB_ENV
+        git checkout poll-oneoff-cancel
+        go install .
     - name: Test
       run: |
+        DIR=/home/runner/work/container2wasm/wazero
+        go mod edit -replace="github.com/tetratelabs/wazero=${{ env.wazero }}"
+        go mod tidy
+        cd tests/wazero
+        go mod edit -replace="github.com/tetratelabs/wazero=${{ env.wazero }}"
+        go mod tidy
+        cd ../..
         make test
 
   # benchmark:

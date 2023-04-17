@@ -45,7 +45,7 @@ func main() {
 	}
 	// we forcibly enable non-blocking read of stdin.
 	_, err = r.InstantiateModule(ctx, compiled,
-		wazero.NewModuleConfig().WithSysWalltime().WithSysNanotime().WithSysNanosleep().WithRandSource(crand.Reader).WithStdout(os.Stdout).WithStderr(os.Stderr).WithStdin(newNonBlockReader(os.Stdin)).WithFSConfig(fsConfig).WithArgs(append([]string{"arg0"}, args[1:]...)...))
+		wazero.NewModuleConfig().WithSysWalltime().WithSysNanotime().WithSysNanosleep().WithRandSource(crand.Reader).WithStdout(os.Stdout).WithStderr(os.Stderr).WithStdin(os.Stdin).WithFSConfig(fsConfig).WithArgs(append([]string{"arg0"}, args[1:]...)...))
 	if err != nil {
 		panic(err)
 	}

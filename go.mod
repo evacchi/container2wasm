@@ -40,3 +40,5 @@ require (
 	google.golang.org/grpc v1.53.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 )
+
+replace github.com/tetratelabs/wazero => /Users/evacchi/Devel/github.com/tetratelabs/wazero
