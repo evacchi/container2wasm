@@ -41,4 +41,4 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 )
 
-replace github.com/tetratelabs/wazero => /Users/evacchi/Devel/github.com/tetratelabs/wazero
+replace github.com/tetratelabs/wazero => github.com/evacchi/wazero v1.0.0-pre.8.0.20230417185054-319085b1d781
