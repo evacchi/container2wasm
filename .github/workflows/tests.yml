@@ -30,24 +30,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Test
       run: |
-        CUR=$PWD
-        cd ..
-        echo == Cloning evacchi/wazero
-        git clone https://github.com/evacchi/wazero
-        cd wazero
-        WAZERO=$PWD
-        echo == Checkout branch poll-oneoff-cancel
-        git checkout poll-oneoff-cancel
-        cd $CUR
-        echo == Mod replace in project root
-        go mod edit -replace="github.com/tetratelabs/wazero=$WAZERO"
-        go mod tidy
-        cd tests/wazero
-        echo == Mod replace in tests/wazero
-        go mod edit -replace="github.com/tetratelabs/wazero=$WAZERO"
-        go mod tidy
-        cd $CUR
-        echo == Start real tests
         make test
 
   # benchmark:
